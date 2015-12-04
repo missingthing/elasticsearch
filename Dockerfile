@@ -21,7 +21,7 @@ RUN \
 
 # Install cloud-aws plugin  
 RUN \
-  cd /elasticsearch  && bin/plugin -install cloud-aws
+  cd /elasticsearch  && bin/plugin install cloud-aws
 
 # Define mountable directories.
 VOLUME ["/data"]
