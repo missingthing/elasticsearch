@@ -1,5 +1,16 @@
 path:
   data: /data/data
   logs: /data/log
-  plugins: /data/plugins
   work: /data/work
+cluster:
+  name: ${ES_CLUSTER_NAME}
+cloud:
+  aws:
+  # these credentials are restricted to only DescribeInstances
+    access_key: ${ES_AWS_ACCESS_KEY}
+    secret_key: ${ES_AWS_SECRET_KEY}
+    region: ${AWS_REGION}
+discovery:
+  type: ec2
+  ec2:
+    groups: ${ES_CLUSTER_NAME}
