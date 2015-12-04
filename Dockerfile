@@ -7,7 +7,9 @@
 # Pull base image.
 FROM dockerfile/java:oracle-java8
 
-ENV ES_PKG_NAME elasticsearch-1.5.0
+ENV ES_PKG_NAME elasticsearch-2.1.0
+ENV ES_CLUSTER_NAME elasticsearch
+ENV ES_AWS_REGION eu-west-1
 
 # Install Elasticsearch.
 RUN \
@@ -16,6 +18,10 @@ RUN \
   tar xvzf $ES_PKG_NAME.tar.gz && \
   rm -f $ES_PKG_NAME.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch
+
+# Install cloud-aws plugin  
+RUN \
+  cd /elasticsearch  && bin/plugin -install cloud-aws
 
 # Define mountable directories.
 VOLUME ["/data"]
