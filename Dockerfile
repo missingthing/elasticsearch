@@ -39,8 +39,20 @@ VOLUME ["/data"]
 ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 # Define working directory.
-WORKDIR /data
+# WORKDIR /data
 
+# Create user
+RUN \
+  adduser --disabled-password --gecos '' elasticsearch && \
+  adduser elasticsearch sudo && \
+  echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Chown directories
+RUN \
+  chown -R elasticsearch /elasticsearch
+
+# Set defaults
+USER elasticsearch
 ENV ES_CLUSTER_NAME elasticsearch
 ENV ES_AWS_REGION eu-west-1
 

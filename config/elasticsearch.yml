@@ -2,6 +2,8 @@ path:
   data: /data/data
   logs: /data/log
   work: /data/work
+network:
+  host: _non_loopback_
 cluster:
   name: ${ES_CLUSTER_NAME}
 cloud:
