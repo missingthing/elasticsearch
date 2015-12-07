@@ -9,7 +9,7 @@ cloud:
   # these credentials are restricted to only DescribeInstances
     access_key: ${ES_AWS_ACCESS_KEY}
     secret_key: ${ES_AWS_SECRET_KEY}
-    region: ${AWS_REGION}
+    region: ${ES_AWS_REGION}
 discovery:
   type: ec2
   ec2:
